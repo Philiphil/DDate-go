@@ -94,3 +94,20 @@ func TimeToDTime(t time.Time) (f DTime){
 	}
 	return
 }
+
+func UnixToDTime(i int64) DTime{
+	return TimeToDTime( time.Unix(i,0) )
+}
+
+func DTimeToTime(d DTime) (t time.Time){
+	tmp,_ := time.LoadLocation("UTC")
+	y := time.Date( d.Year - YOLD, 1,0,0,0,0,0, tmp)
+
+	n := int( (int(d.Season * SL)) + int(d.Day) )
+	h := d.Hour
+	m := d.Minute
+	s := d.Second
+	var u int64 
+	u = int64((n*24*60*60*1000*1000*1000) + (h*60*60*1000*1000*1000) + (m*60*1000*1000*1000)+ (s*1000*1000*1000))
+	return y.Add(time.Duration(u))
+}
