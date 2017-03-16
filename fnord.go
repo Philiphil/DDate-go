@@ -3,12 +3,14 @@ package DDate
 import (
 	"time"
 )
-
+//YOLD stands for Year of Our Lady of Discord, which is when greyface's cuses began.
+//SL Stands for (Discordian) Season length, which is 73 days fnord
 const (
 	YOLD = 1166
 	SL = 73
 )
 
+//DTime is Discordian time
 type DTime struct{
 	Year int
 	Season DSeason
@@ -19,6 +21,7 @@ type DTime struct{
 	Second int
 	Holyday string
 }
+//Discordian Holydays
 var holydays = [...]DTime{
 		DTime{0,Chaos,5,0,0,0,0,"Mungday"},
 		DTime{0,Chaos,50,0,0,0,0,"Chaoflux"},
@@ -32,6 +35,7 @@ var holydays = [...]DTime{
 		DTime{0,Aftermath,5,0,0,0,0,"Maladay"},
 		DTime{0,Aftermath,50,0,0,0,0,"Afflux"}	}
 
+//Discordian actually have 5 seasons of 73 days
 type DSeason int
 const (
 	Chaos DSeason = iota
@@ -50,7 +54,7 @@ var seasons = [...]string{
 func(s DSeason) String() string{
 	return seasons[s]
 }
-
+// A discordian week length 5 discordian days
 type DDay int
 const (
 	Sweetmorn DDay = iota
@@ -70,6 +74,9 @@ func (d DDay) String() string{
 	return days[d]
 }
 
+//Converts time.Time to DDate.DTime
+// input : time.time
+// Ouput : DDate.DTime
 func TimeToDTime(t time.Time) (f DTime){
 	f.Year = t.Year() + YOLD
 	d := t.YearDay()
@@ -96,10 +103,16 @@ func TimeToDTime(t time.Time) (f DTime){
 	return
 }
 
+//Converts unix timestamp to DDate.DTime
+// input : int64
+// Ouput : DDate.DTime
 func UnixToDTime(i int64) DTime{
 	return TimeToDTime( time.Unix(i,0) )
 }
 
+//Converts DDate.DTime to time.Time
+// input : DDate.Dtime
+// Ouput : time.time
 func DTimeToTime(d DTime) (t time.Time){
 	tmp,_ := time.LoadLocation("UTC")
 	y := time.Date( d.Year - YOLD, 1,0,0,0,0,0, tmp)
