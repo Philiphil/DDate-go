@@ -1,3 +1,4 @@
+// Package DDate provides Discordian Dates for go
 package DDate
 import (
 	"time"
