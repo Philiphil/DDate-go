@@ -3,8 +3,8 @@ package DDate
 import (
 	"time"
 )
-//YOLD stands for Year of Our Lady of Discord, which is when greyface's cuses began.
-//SL Stands for (Discordian) Season length, which is 73 days fnord
+//YOLD stands for Year of Our Lady of Discord, which is when greyface's cuses began.  
+//SL Stands for (Discordian) Season length, which is 73 days fnord  
 const (
 	YOLD = 1166
 	SL = 73
@@ -74,9 +74,9 @@ func (d DDay) String() string{
 	return days[d]
 }
 
-//Converts time.Time to DDate.DTime
-// input : time.time
-// Ouput : DDate.DTime
+//Converts time.Time to DDate.DTime  
+// input : time.time  
+// Ouput : DDate.DTime  
 func TimeToDTime(t time.Time) (f DTime){
 	f.Year = t.Year() + YOLD
 	d := t.YearDay()
@@ -103,16 +103,16 @@ func TimeToDTime(t time.Time) (f DTime){
 	return
 }
 
-//Converts unix timestamp to DDate.DTime
-// input : int64
-// Ouput : DDate.DTime
+//Converts unix timestamp to DDate.DTime  
+// input : int64  
+// Ouput : DDate.DTime  
 func UnixToDTime(i int64) DTime{
 	return TimeToDTime( time.Unix(i,0) )
 }
 
-//Converts DDate.DTime to time.Time
-// input : DDate.Dtime
-// Ouput : time.time
+//Converts DDate.DTime to time.Time  
+// input : DDate.Dtime  
+// Ouput : time.time  
 func DTimeToTime(d DTime) (t time.Time){
 	tmp,_ := time.LoadLocation("UTC")
 	y := time.Date( d.Year - YOLD, 1,0,0,0,0,0, tmp)
