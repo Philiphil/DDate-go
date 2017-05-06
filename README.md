@@ -16,8 +16,3 @@ DDay : Discordian Day (0-4)
 function timeToDTime(t time) returns t converted in DTime  
 function UnixToDTime(i int64) returns i converted in DTime  
 function DTimeToTime(d Dtime) returns d converted in Time  
-
-## Support on Beerpay
-Hey dude! Help me out for a couple of :beers:!
-
-[![Beerpay](https://beerpay.io/Philiphil/DDate-go/badge.svg?style=beer-square)](https://beerpay.io/Philiphil/DDate-go)  [![Beerpay](https://beerpay.io/Philiphil/DDate-go/make-wish.svg?style=flat-square)](https://beerpay.io/Philiphil/DDate-go?focus=wish)
